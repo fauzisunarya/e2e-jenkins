@@ -2,8 +2,8 @@ pipeline{
     agent any
 
     parameters{
-        string(name: 'SPEC', defaultValue: "cypress/e2e/1-getting-started/**.cy.js", description: "modul getting started")
-        choice(name: 'BROWSER', choices: ['chrome','edge','firefox'], description: "Pilih browsernya")
+        string(name: 'MODULE', defaultValue: "1-getting-started", description: "Pilih Module")
+        choice(name: 'BROWSER', choices: ['chrome','edge','firefox'], description: "Pilih Browser")
     }
 
     options{
@@ -20,7 +20,7 @@ pipeline{
         stage('Testing'){
             steps{
                 bat "npm i"
-                bat "npx cypress run --browser ${BROWSER} --spec ${SPEC}"
+                bat "npx cypress run --browser ${BROWSER} --config-file partial_cypress/${MODULE}/cypress.config.js"
             }
         }
         stage('Deploying'){
