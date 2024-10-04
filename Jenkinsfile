@@ -3,7 +3,7 @@ pipeline{
 
     parameters{
         string(name: 'SPEC', defaultValue: "cypress/e2e/1-getting-started/**.cy.js", description: "modul getting started")
-        choice(name: 'BROWSER', choice: ['chrome','edge','firefox'], description: "Pilih browsernya")
+        choice(name: 'BROWSER', choices: ['chrome','edge','firefox'], description: "Pilih browsernya")
     }
 
     options{
