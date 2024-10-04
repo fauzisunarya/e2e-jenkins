@@ -10,7 +10,7 @@ pipeline{
         ansiColor('xterm')
     } 
 
-    stage{
+    stages{
         stage('Building'){
             echo "Building application"
         }
