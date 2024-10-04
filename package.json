@@ -5,7 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "cypress:chrome": "cypress run --browser chrome --config-file partial_cypress/1-getting-started/cypress.config.js",
-    "cypress:edge": "cypress run --browser chrome --config-file partial_cypress/1-getting-started/.config.js"
+    "cypress:edge": "cypress run --browser edge --config-file partial_cypress/1-getting-started/cypress.config.js"
 
   },
   "author": "",
