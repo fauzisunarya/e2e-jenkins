@@ -4,6 +4,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "merge_reports": "mochawesome-merge cypress/reports/.jsons/*.json > output.json",
+    "mochawesome_report": "marge --reportDir cypress/reports -t Cypress_Test_Report -p Cypress_HTML_Report -f Cypress_HTML_Report --charts true output.json",
     "cypress:chrome": "cypress run --browser chrome --config-file partial_cypress/1-getting-started/cypress.config.js",
     "cypress:edge": "cypress run --browser edge --config-file partial_cypress/1-getting-started/cypress.config.js"
   },

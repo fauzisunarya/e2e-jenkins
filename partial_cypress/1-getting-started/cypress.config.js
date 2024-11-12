@@ -3,7 +3,7 @@ const { configureAllureAdapterPlugins } = require("@mmisty/cypress-allure-adapte
 
 
 module.exports = defineConfig({
-  // reporter: 'cypress-mochawesome-reporter',
+  reporter: 'cypress-mochawesome-reporter',
   // reporterOptions: {
   //   reportDir:'cypress/report',
   //   charts: true,
@@ -13,12 +13,19 @@ module.exports = defineConfig({
   //   saveAllAttempts: false,
   //   debug: true
   // },
+  "reporterOptions": {
+    "reportDir": "cypress/reports",
+    "overwrite": false,
+    "html": false,
+    "json": true,
+    "timestamp":"mmddyyyy_HHMMss"
+  },
   e2e: {
     specPattern: [
       "cypress/e2e/1-getting-started/*.cy.js"
     ],
     env: {
-			allure: 'true',
+			allure: 'false',
 			allureCleanResults: 'false',
 			// allureAddVideoOnPass: true,
 			// allureAttachRequests: true,

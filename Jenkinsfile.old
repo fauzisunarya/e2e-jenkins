@@ -41,17 +41,19 @@ pipeline{
         }
     }
 
-    post {
-    always {
-        publishHTML([
-            allowMissing: false,
-            alwaysLinkToLastBuild: false,
-            keepAll: false,
-            reportDir: 'cypress/reports/',
-            reportFiles: 'htmlpublisher-wrapper.html',
-            reportName: 'Cypress Report (HTML)',
-            reportTitles: ''
-        ])
+    post{
+        success { 
+            
+            allure([
+                    includeProperties: false,
+                    jdk: '',
+                    properties: [],
+                    reportBuildPolicy: 'ALWAYS',
+                    results: [[path: 'allure-results']]
+                ])
+            }
+        // always{
+        //     publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: 'cypress/report', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
+        // }
     }
-}
 }
