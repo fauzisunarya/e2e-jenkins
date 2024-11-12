@@ -66,9 +66,10 @@ pipeline{
             alwaysLinkToLastBuild: false,
             keepAll: false,
             reportDir: 'cypress/reports/',
-            reportFiles: 'htmlpublisher-wrapper.html',
-            reportName: 'Cypress Report (HTML)',
-            reportTitles: ''
+            reportFiles: 'index.html',
+            reportName: 'HTML Report',
+            reportTitles: '',
+            useWrapperFileDirectly: true
         ])
     }
 }
