@@ -17,6 +17,18 @@ module.exports = defineConfig({
     specPattern: [
       "cypress/e2e/1-getting-started/*.cy.js"
     ],
+    env: {
+			allure: 'true',
+			allureCleanResults: 'false',
+			// allureAddVideoOnPass: true,
+			// allureAttachRequests: true,
+			// allureCompactAttachments: 'false',
+			allureResults: '../../allure-results', // for test results to write
+			// allureSkipCommands: '', // separated comma
+			// allureShowDuplicateWarn: 'true',
+			// allureShowTagsInTitle: false,
+			// allureAddNonSpecialTags: 'true',
+		  },
     setupNodeEvents(on, config) {
     // require('cypress-mochawesome-reporter/plugin')(on);
     // return config;
