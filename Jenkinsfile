@@ -37,7 +37,7 @@ pipeline{
                     jdk: '',
                     properties: [],
                     reportBuildPolicy: 'ALWAYS',
-                    results: [[path: 'partial_cypress/1-getting-started/allure-results']]
+                    results: [[path: 'allure-results']]
                 ])
             }
         // always{
