@@ -19,7 +19,8 @@ pipeline{
         stage('Building'){
             steps{
                 // Membuat file cypress.env.json dari credential
-                    writeFile file: 'cypress.env.json', text: "${CYPRESS_ENV}"
+                    writeFile file: 'cypress.env.json', text: CYPRESS_ENV
+
                     echo "Building application"
 
             }
