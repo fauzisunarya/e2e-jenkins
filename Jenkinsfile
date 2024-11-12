@@ -43,8 +43,8 @@ pipeline{
                         // Mengonversi data JSON ke format yang bisa digunakan di perintah Cypress
                         env.CYPRESS_ENV_STRING = envData.collect { key, value -> "${key}=${value}" }.join(',')
                         bat "npx cypress run --browser ${BROWSER} --config-file partial_cypress/${MODULE}/cypress.config.js --env ${env.CYPRESS_ENV_STRING}"
-                        bat "npm run merge_reports"
-                        bat "npm run mochawesome_report"
+                        // bat "npm run merge_reports"
+                        // bat "npm run mochawesome_report"
 
                     }
                 }
