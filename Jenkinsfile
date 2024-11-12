@@ -28,7 +28,7 @@ pipeline{
         stage('Testing'){
             steps{
                 bat 'ls -l cypress.env.json'
-                bat 'get-content cypress.env.json'
+                bat 'type cypress.env.json'
                 bat "npm i"
                 bat "npx cypress run --browser ${BROWSER} --config-file partial_cypress/${MODULE}/cypress.config.js cypress.env.json"
             }
