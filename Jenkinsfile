@@ -1,6 +1,11 @@
 pipeline{
     agent any
 
+    environment {
+        // Mendapatkan credential berisi JSON dari Jenkins
+        CYPRESS_ENV = credentials('CYPRESS_ENV')
+    }
+
     parameters{
         string(name: 'MODULE', defaultValue: "1-getting-started", description: "Pilih Module")
         choice(name: 'BROWSER', choices: ['chrome','edge','firefox'], description: "Pilih Browser")
@@ -13,6 +18,8 @@ pipeline{
     stages{
         stage('Building'){
             steps{
+                // Membuat file cypress.env.json dari credential
+                    writeFile file: 'cypress.env.json', text: "${CYPRESS_ENV}"
                     echo "Building application"
 
             }
