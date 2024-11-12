@@ -20,7 +20,7 @@ pipeline{
         stage('Testing'){
             steps{
                 bat "npm i"
-                bat "npx cypress run --browser ${BROWSER} --config-file partial_cypress/${MODULE}/cypress.config.js --env allure=true"
+                bat "npx cypress run --browser ${BROWSER} --config-file partial_cypress/${MODULE}/cypress.config.js"
             }
         }
         stage('Deploying'){
