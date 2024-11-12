@@ -27,6 +27,10 @@ pipeline{
         }
         stage('Testing'){
             steps{
+                def envData = readJSON file: 'cypress.env.json'
+                    envData.each { key, value ->
+                        env["CYPRESS_${key.toUpperCase()}"] = value
+                    }
                 bat "npm i"
                 bat "npx cypress run --browser ${BROWSER} --config-file partial_cypress/${MODULE}/cypress.config.js"
             }
