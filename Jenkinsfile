@@ -29,7 +29,7 @@ pipeline{
             steps{
                 bat 'ls -l cypress.env.json'
                 bat 'type cypress.env.json'
-                bat 'copy cypress.env.json %WORKSPACE%\\cypress.env.json'
+                bat 'copy CYPRESS_ENV %WORKSPACE%\\cypress.env.json'
                 bat "npm i"
                 bat "npx cypress run --browser ${BROWSER} --config-file partial_cypress/${MODULE}/cypress.config.js cypress.env.json"
             }
