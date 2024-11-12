@@ -29,9 +29,15 @@ pipeline{
             steps{
                 bat 'ls -l cypress.env.json'
                 bat 'type cypress.env.json'
-                bat 'copy ${CYPRESS_ENV} %WORKSPACE%\\cypress.env.json'
+                withCredentials([file(credentialsId: 'CYPRESS_ENV', variable: 'CYPRESS_ENV_FILE')]) {
+                def envData = readJSON file: env.CYPRESS_ENV_FILE
+                def envString = envData.collect { key, value -> "${key}=${value}" }.join(',')
                 bat "npm i"
-                bat "npx cypress run --browser ${BROWSER} --config-file partial_cypress/${MODULE}/cypress.config.js cypress.env.json"
+                bat "npx cypress run --browser ${BROWSER} --config-file partial_cypress/${MODULE}/cypress.config.js --env ${envString}"
+                }
+                // bat 'copy ${CYPRESS_ENV} %WORKSPACE%\\cypress.env.json'
+                // bat "npm i"
+                // bat "npx cypress run --browser ${BROWSER} --config-file partial_cypress/${MODULE}/cypress.config.js cypress.env.json"
             }
         
         }
